@@ -1,0 +1,26 @@
+import numpy as np
+
+def g(x, y):
+    return (np.cos(y + 1)) / 2
+
+def h(x):
+    return -np.sin(x) - 0.4
+
+def simple_iteration_method(x0, y0, tolerance):
+    x, y = x0, y0
+    while True:
+        x_new = g(x, y)
+        y_new = h(x)
+        if np.abs(x_new - x) < tolerance and np.abs(y_new - y) < tolerance:
+            break
+        x, y = x_new, y_new
+    return x, y
+
+x0, y0 = 0, 0
+tolerance = 0.001
+
+x_root, y_root = simple_iteration_method(x0, y0, tolerance)
+
+print("Корені системи:")
+print("x =", x_root)
+print("y =", y_root)
